@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-inherit="point_of_sale.ActionpadWidget" t-inherit-mode="extension">
+        <xpath expr="//button[hasclass('pay')]" position="replace">
+
+            <t t-if="orderPaid()">
+                 <button class="button pay" t-on-click="trigger('click-delivery')">
+                    <div class="pay-circle">
+                        <i class="fa fa-chevron-right" role="img" aria-label="Pay" title="Pay" />
+                    </div>
+                     Nuevo
+                </button>
+            </t>
+            <t t-else="">
+
+                <button class="button pay" t-on-click="trigger('click-pay')">
+                    <div class="pay-circle">
+                        <i class="fa fa-chevron-right" role="img" aria-label="Pay" title="Pay" />
+                    </div>
+                    Payment
+                </button>
+            </t>
+        </xpath>
+    </t>
+
+    <!--  created a confirm button to synchronize the order in the kitchen view -->
+    <t t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension" priority="9999">
+        <xpath expr="//div[hasclass('kitchenorder_confirmed')]" position="replace">
+            <div class='control-button kitchen_confirm_button' t-on-click="trigger('button_Confirm')">
+                <i class='fa fa-check'/> <span class="confirm_label">Confirmed</span>
+            </div>
+            <div class="products_expand_collapse"><i class="fa fa-expand fa-lg order_confirm_fa_collapse" aria-hidden="true" t-on-click="trigger('products_expand_collapse')"/></div>
+        </xpath>
+       <!-- <xpath expr="//div[hasclass('kitchen_confirm_button')]" position="replace">
+
+                   <div class='control-button kitchen_confirm_button' t-on-click="trigger('button_Confirm')">
+                        <i class='fa fa-check'/><span class="confirm_label">Confirm Order</span>
+                   </div>
+                   <div class="products_expand_collapse"><i class="fa fa-expand fa-lg order_confirm_fa_collapse" aria-hidden="true" t-on-click="trigger('products_expand_collapse')"/></div>
+
+
+        </xpath>-->
+    </t>
+</templates>

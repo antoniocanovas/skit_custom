@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="pos_skit_custom" inherit_id="point_of_sale.assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/skit_pos_restaurant_custom/static/src/js/Misc/ActionpadWidget.js"></script>
+            <script type="text/javascript" src="/skit_pos_restaurant_custom/static/src/js/Misc/pos_screen.js"></script>
+        </xpath>
+    </template>
+</odoo>
